@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before vs After</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        section{
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+        img{
+            height: 100vh;
+        }
+        #afterimg{
+            height: 100vh;
+            position: absolute;
+        }
+        #beforeimg{
+            z-index: 1;
+        }
+        div{
+            position: absolute;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <img id="afterimg" src="after.jpg">
+        <div id="after">
+            <img id="beforeimg" src="before.jpg">
+        </div>
+    </section>
+    <script>
+        const after = document.getElementById("after")
+        const handleOnMove = e => {
+            const w = ( e.clientX / window.innerWidth ) * 100
+            after.style.width = `${w}%`
+        }
+        document.addEventListener("mousemove", handleOnMove)
+    </script>
+</body>
+</html>
